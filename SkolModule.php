@@ -15,10 +15,16 @@
 namespace Modules\Skol;
 
 
+use Mindy\Base\Mindy;
 use Mindy\Base\Module;
 
 class SkolModule extends Module
 {
+
+    public static function preConfigure()
+    {
+        Mindy::app()->template->addHelper('get_actions', ['\Modules\Skol\Helpers\SkolHelper', 'getActions']);
+    }
 
     public function getMenu()
     {
@@ -28,6 +34,10 @@ class SkolModule extends Module
                 [
                     'name' => 'Заявки',
                     'adminClass' => 'RequestsAdmin',
+                ],
+                [
+                    'name' => 'Акции',
+                    'adminClass' => 'ActionAdmin',
                 ]
             ]
         ];

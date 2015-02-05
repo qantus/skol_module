@@ -8,6 +8,8 @@ use Modules\Skol\Models\Request;
 
 class RequestsAdmin extends ModelAdmin
 {
+    public $sortingColumn = 'position';
+
     public function getColumns()
     {
         return ['name', 'phone'];
