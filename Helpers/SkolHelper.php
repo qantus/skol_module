@@ -10,11 +10,17 @@
 namespace Modules\Skol\Helpers;
 
 use Modules\Skol\Models\Action;
+use Modules\Skol\Models\Product;
 
 class SkolHelper
 {
     public static function getActions()
     {
         return Action::objects()->order(['position'])->all();
+    }
+
+    public static function getProducts()
+    {
+        return Product::objects()->order(['position'])->limit(4)->all();
     }
 }

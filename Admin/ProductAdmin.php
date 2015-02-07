@@ -2,10 +2,12 @@
 
 namespace Modules\Skol\Admin;
 
+use Mindy\Base\Mindy;
 use Modules\Admin\Components\ModelAdmin;
-use Modules\Skol\Models\Action;
+use Modules\Skol\Forms\ProductForm;
+use Modules\Skol\Models\Product;
 
-class ActionAdmin extends ModelAdmin
+class ProductAdmin extends ModelAdmin
 {
     public $sortingColumn = 'position';
 
@@ -19,8 +21,13 @@ class ActionAdmin extends ModelAdmin
         return ['name'];
     }
 
+    public function getCreateForm()
+    {
+        return ProductForm::className();
+    }
+
     public function getModel()
     {
-        return new Action;
+        return new Product;
     }
 }

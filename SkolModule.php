@@ -24,6 +24,7 @@ class SkolModule extends Module
     public static function preConfigure()
     {
         Mindy::app()->template->addHelper('get_actions', ['\Modules\Skol\Helpers\SkolHelper', 'getActions']);
+        Mindy::app()->template->addHelper('get_products', ['\Modules\Skol\Helpers\SkolHelper', 'getProducts']);
     }
 
     public function getMenu()
@@ -38,6 +39,18 @@ class SkolModule extends Module
                 [
                     'name' => 'Акции',
                     'adminClass' => 'ActionAdmin',
+                ],
+                [
+                    'name' => 'Категории товаров',
+                    'adminClass' => 'CategoryAdmin',
+                ],
+                [
+                    'name' => 'Товары',
+                    'adminClass' => 'ProductAdmin',
+                ],
+                [
+                    'name' => 'Клиенты',
+                    'adminClass' => 'ClientAdmin',
                 ]
             ]
         ];

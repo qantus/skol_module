@@ -2,10 +2,11 @@
 
 namespace Modules\Skol\Admin;
 
+use Mindy\Base\Mindy;
 use Modules\Admin\Components\ModelAdmin;
-use Modules\Skol\Models\Action;
+use Modules\Skol\Models\Client;
 
-class ActionAdmin extends ModelAdmin
+class ClientAdmin extends ModelAdmin
 {
     public $sortingColumn = 'position';
 
@@ -21,6 +22,6 @@ class ActionAdmin extends ModelAdmin
 
     public function getModel()
     {
-        return new Action;
+        return new Client;
     }
 }
