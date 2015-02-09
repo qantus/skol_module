@@ -45,4 +45,26 @@ class RequestForm extends ModelForm
         ];
     }
 
+    public function save()
+    {
+        $saved = parent::save();
+        if ($saved) {
+            $this->sendSms();
+        }
+    }
+
+    public function sendSms()
+    {
+        $ch = curl_init("http://sms.ru/sms/send");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+            "api_id" =>	"a22bdb3d-8b60-b0f4-b58b-eb0fa64aea9a",
+            "to" =>	"79128214441",
+            "text" => "Заявка: {$this->phone->value}, {$this->name->value}"
+        ));
+        $body = curl_exec($ch);
+        curl_close($ch);
+    }
+
 }
