@@ -26,7 +26,8 @@ class RequestController extends CoreController
 
         }
         echo $this->render('skol/request.html', [
-            'form' => $form
+            'form' => $form,
+            'sostav' => isset($_GET['sostav'])
         ]);
     }
 }

@@ -21,6 +21,16 @@ class CatalogController extends CoreController {
     public function actionView($slug)
     {
         $product = $this->getOr404(new Product(), ['slug' => $slug]);
+        $this->breadcrumbs = [
+            [
+                'name' => 'Каталог',
+                'url' => '/catalog/'
+            ],
+            [
+                'name' => $product->name
+            ]
+        ];
+        $this->title = [$product->name];
         echo $this->render('catalog/view.html',[
             'product' => $product
         ]);
